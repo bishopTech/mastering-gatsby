@@ -41,8 +41,7 @@ const GlobalStyles = createGlobalStyle`
       --cast: 4px;
     }
   }
-  
-  /* HOW TO MAKE IMAGE PIXELATED ON LOAD */
+
   .gatsby-image-wrapper img[src*=base64\\,] {
     image-rendering: -moz-crisp-edges;
     image-rendering: pixelated;
@@ -74,12 +73,6 @@ const GlobalStyles = createGlobalStyle`
 
   img {
     max-width: 100%;
-  }
-
-  .tilt {
-    transform: rotate(-2deg);
-    position: relative;
-    display: inline-block;
   }
 
 `;
