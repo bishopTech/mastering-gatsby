@@ -14,7 +14,7 @@ const SiteBorderStyles = styled.div`
   background: white url(${stripes});
   background-size: 1500px;
   padding: 5px;
-  padding: clamp(5px, 1vw, 25px); // clamp holds to page
+  padding: clamp(5px, 1vw, 25px);
   box-shadow: 0 0 5px 3px rgba(0, 0, 0, 0.044);
   border: 5px solid white;
   @media (max-width: 1100px) {
