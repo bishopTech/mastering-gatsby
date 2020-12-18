@@ -4,6 +4,8 @@ import createSchema from 'part:@sanity/base/schema-creator';
 import schemaTypes from 'all:part:@sanity/base/schema-type';
 // Then we give our schema to the builder and provide the result to Sanity
 
+// ran the import for the sample dataset : sanity dataset import ./sample-data/all-sample-data.gz production --replace
+
 import pizza from './pizza';
 import topping from './topping';
 import person from './person';
