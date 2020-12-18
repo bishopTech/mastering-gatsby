@@ -1,5 +1,6 @@
 // Everything in sanity studio is a react component
 import { MdLocalPizza as icon } from 'react-icons/md';
+import PriceInput from '../components/PriceInput';
 
 export default {
   // name is the computer name
@@ -42,6 +43,7 @@ export default {
       description: 'Price of Pizza in cents',
       validation: (Rule) => Rule.min(1000).max(50000),
       // TODO: add custom component
+      inputComponent: PriceInput,
     },
     {
       name: 'toppings',
