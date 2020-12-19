@@ -58,9 +58,10 @@ export default function SlicemastersPage({ data }) {
   );
 }
 
+// Any context that is passed from the gatsby node file is available in the query of the component
 export const query = graphql`
-  query {
-    slicemasters: allSanityPerson {
+  query($skip: Int = 0, $pageSize: Int = 2) {
+    slicemasters: allSanityPerson(limit: $pageSize, skip: $skip) {
       totalCount
       nodes {
         name
