@@ -1,15 +1,14 @@
-import { graphql } from 'gatsby';
 import React from 'react';
-import Layout from '../components/Layout';
+import { graphql } from 'gatsby';
 import PizzaList from '../components/PizzaList';
 import ToppingsFilter from '../components/ToppingsFilter';
 
 // we could use props but i will destructure the values to just what we need
-export default function PizzasPage({ data }) {
+export default function PizzasPage({ data, pageContext }) {
   const pizzas = data.pizzas.nodes;
   return (
     <>
-      <ToppingsFilter />
+      <ToppingsFilter activeTopping={pageContext.topping} />
       <PizzaList pizzas={pizzas} />
     </>
   );
@@ -17,9 +16,11 @@ export default function PizzasPage({ data }) {
 
 // This query will magically be set as props for our function via gatsby
 export const query = graphql`
-  query PizzaQuery {
+  query PizzaQuery($toppingRegex: String) {
     # named query output
-    pizzas: allSanityPizza {
+    pizzas: allSanityPizza(
+      filter: { toppings: { elemMatch: { name: { regex: $toppingRegex } } } }
+    ) {
       nodes {
         name
         id
@@ -32,10 +33,9 @@ export const query = graphql`
         }
         image {
           asset {
-            fixed(height: 200, width: 200) {
+            fixed(width: 600, height: 200) {
               ...GatsbySanityImageFixed
             }
-
             fluid(maxWidth: 400) {
               # this fragment will not work in graphiql tool but is part of gatsby
               ...GatsbySanityImageFluid
