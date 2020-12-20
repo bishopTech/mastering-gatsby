@@ -1,4 +1,4 @@
-import path from 'path';
+import path, { resolve } from 'path';
 import fetch from 'isomorphic-fetch';
 
 async function turnPizzasIntoPages({ graphql, actions }) {
@@ -31,7 +31,6 @@ async function turnPizzasIntoPages({ graphql, actions }) {
 }
 
 async function turnToppingsIntoPages({ graphql, actions }) {
-  console.log(`Turning the Toppings into Pages!!!`);
   // 1. Get the template
   const toppingTemplate = path.resolve('./src/pages/pizzas.js');
   // 2. query all the toppings
@@ -47,7 +46,6 @@ async function turnToppingsIntoPages({ graphql, actions }) {
   `);
   // 3. createPage for that topping
   data.toppings.nodes.forEach((topping) => {
-    console.log(`Creating page for topping`, topping.name);
     actions.createPage({
       path: `topping/${topping.name}`,
       component: toppingTemplate,
@@ -109,7 +107,7 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
   // TODO: 2. Turn each slicemaster into their own page (TODO)
   data.slicemasters.nodes.forEach((slicemaster) => {
     actions.createPage({
-      component: path.resolve('./src/templates/Slicemaster.js'),
+      component: resolve('./src/templates/Slicemaster.js'),
       path: `/slicemaster/${slicemaster.slug.current}`,
       context: {
         name: slicemaster.person,
@@ -129,7 +127,7 @@ async function turnSlicemastersIntoPages({ graphql, actions }) {
     console.log(`Creating page ${i}`);
     actions.createPage({
       path: `/slicemasters/${i + 1}`,
-      component: resolve('./src/pages/slicemasters.js'),
+      component: path.resolve('./src/pages/slicemasters.js'),
       // This data is pass to the template when we create it
       context: {
         skip: i * pageSize,

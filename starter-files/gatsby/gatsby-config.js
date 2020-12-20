@@ -7,9 +7,11 @@ export default {
     title: 'Slicks Slices',
     siteUrl: 'https://gatsby.pizza',
     description: 'Super cool Pizza place!',
+    twitter: '@slicksSlices',
   },
   plugins: [
     'gatsby-plugin-styled-components',
+    'gatsby-plugin-react-helmet',
     {
       // Name of the plugin
       resolve: 'gatsby-source-sanity',
