@@ -1,5 +1,5 @@
-import { Link } from 'gatsby';
 import React from 'react';
+import { Link } from 'gatsby';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 
@@ -12,7 +12,7 @@ const PizzaGridStyles = styled.div`
 
 const PizzaStyles = styled.div`
   display: grid;
-  /* Take your row sizing not from the pizzaStyles div, but from the PizzaGridStyles grid */
+  /* Take your row sizing not from the pizzaStyles div, but from the  PizzaGridStyles grid */
   @supports not (grid-template-rows: subgrid) {
     --rows: auto auto 1fr;
   }
@@ -33,7 +33,7 @@ function SinglePizza({ pizza }) {
           <span className="mark">{pizza.name}</span>
         </h2>
       </Link>
-      <p>{pizza.toppings.map((toppings) => toppings.name).join(', ')}</p>
+      <p>{pizza.toppings.map((topping) => topping.name).join(', ')}</p>
       <Img fluid={pizza.image.asset.fluid} alt={pizza.name} />
     </PizzaStyles>
   );
@@ -43,7 +43,7 @@ export default function PizzaList({ pizzas }) {
   return (
     <PizzaGridStyles>
       {pizzas.map((pizza) => (
-        <SinglePizza pizza={pizza} key={pizza.id} />
+        <SinglePizza key={pizza.id} pizza={pizza} />
       ))}
     </PizzaGridStyles>
   );
