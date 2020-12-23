@@ -56,6 +56,7 @@ export default function OrderPage({ data }) {
             value={values.email}
             onChange={updateValue}
           />
+          {/* for honey pot  */}
           <input
             type="mapleSyrup"
             name="mapleSyrup"
