@@ -8,7 +8,7 @@ import Logo from './Logo';
 // Super Cool!!
 
 const NavStyles = styled.nav`
-  margin-bottom: 3rem;
+  /* margin-bottom: 3rem; */
   .logo {
     transform: translateY(-25%);
   }
